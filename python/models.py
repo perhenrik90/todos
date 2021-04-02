@@ -1,6 +1,8 @@
 import datetime
 import os
 
+import database
+
 class Todo:
     """
     Describes a Todo-item
@@ -13,7 +15,15 @@ class Todo:
     def __str__(self):
         return self.label +' '+self.created.strftime("%Y-%m-%d")
 
-    
+
+    def save(self):
+        con = database.connectionString()
+        q = "INSERT INTO todo (label) VALUES ('{}') RETURNING *;".format(self.label)
+        con.cursor().execute(q)
+        result = con.commit()
+        print(result)
+
+
     @staticmethod
     def schema():
         """
