@@ -2,6 +2,7 @@ import database
 import models
 import flask
 from flask import jsonify
+from flask import request
 
 app = flask.Flask(__name__)
 
@@ -12,7 +13,8 @@ m1 = models.Todo('Test 4')
 m1.save()
 
 
-@app.route('/todos')
+@app.route('/todo', methods=['GET','POST'])
 def get_todos():
-    objs = models.Todo.getTodos()
-    return jsonify(objs)
+    if request.method == 'GET':
+        objs = models.Todo.getTodos()
+        return jsonify(objs)
