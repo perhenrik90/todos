@@ -23,7 +23,16 @@ class Todo:
         result = con.commit()
         print(result)
 
-
+    @staticmethod
+    def getTodos():
+        con = database.connectionString()
+        q = "SELECT id, label, created FROM todo;"
+        cur = con.cursor()
+        cur.execute(q)
+        todos = []
+        for r in cur.fetchall():
+            todos += [{'id':r[0], 'label':r[1], 'created':r[2]}]
+        return todos
     @staticmethod
     def schema():
         """
