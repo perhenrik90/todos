@@ -14,7 +14,7 @@ def connectionString():
     if 'POSTGRES_HOST' in os.environ:
         host = os.environ['POSTGRES_HOST']
         
-    return psycopg2.connect(dbname=user, user=user, password=password, host="localhost")
+    return psycopg2.connect(dbname=user, user=user, password=password, host=host)
 
 def initDatabase():
     """
