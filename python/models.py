@@ -24,15 +24,16 @@ class Todo:
         print(result)
 
     @staticmethod
-    def getTodos():
+    def getTodosJSON():
         con = database.connectionString()
-        q = "SELECT id, label, created FROM todo;"
+        q = "SELECT id, label, x_pos,y_pos, created FROM todo;"
         cur = con.cursor()
         cur.execute(q)
         todos = []
         for r in cur.fetchall():
-            todos += [{'id':r[0], 'label':r[1], 'created':r[2]}]
+            todos += [{'id':r[0], 'label':r[1],'x_pos':r[2],'y_pos':r[3], 'created':r[4]}]
         return todos
+    
     @staticmethod
     def schema():
         """
@@ -42,6 +43,8 @@ class Todo:
         CREATE TABLE todo (
           id SERIAL PRIMARY KEY,
           label VARCHAR(80),
-          created TIMESTAMP DEFAULT NOW()
+          created TIMESTAMP DEFAULT NOW(),
+          x_pos INTEGER DEFAULT 0,
+          y_pos INTEGER DEFAULT 0
         )
         """

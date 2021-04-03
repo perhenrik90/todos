@@ -13,7 +13,7 @@ print("App started")
 def todo():
     # IF get request, retrive todos
     if request.method == 'GET':
-        objs = models.Todo.getTodos()
+        objs = models.Todo.getTodosJSON()
         return jsonify(objs)
 
     # If post, create a new Todo post
