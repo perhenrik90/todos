@@ -4,23 +4,13 @@ import './App.css';
 import TodoPostit from './components/TodoPostit.js';
 
 function App() {
+
+    let todo_test = {"label":"Test todo","x_pos":10, "y_pos":10}
   return (
-    <div className="App">
-      <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-	  <p>Hello world!</p>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+	  <div className="App">
+	  <div className="AppCanvas">
+	  <TodoPostit todo_item={todo_test} />
+	  </div>
     </div>
   );
 }
