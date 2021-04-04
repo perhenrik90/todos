@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import TodoPostit from './components/TodoPostit.js';
+
 function App() {
   return (
     <div className="App">
