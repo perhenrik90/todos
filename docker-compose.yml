@@ -11,7 +11,7 @@ services:
   api_python:
     build: python/.
     ports:
-    - "5000"
+    - "5000:5000"
     environment:
     - POSTGRES_USER=todouser
     - POSTGRES_PASSWORD=todopassword
