@@ -9,7 +9,7 @@ app = flask.Flask(__name__)
 database.initDatabase()
 print("App started")
 
-@app.route('/todo', methods=['GET','POST'])
+@app.route('/api_python/todo', methods=['GET','POST'])
 def todo():
     # IF get request, retrive todos
     if request.method == 'GET':
