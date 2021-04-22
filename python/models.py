@@ -7,10 +7,12 @@ class Todo:
     """
     Describes a Todo-item
     """
-    def __init__(self, label):
+    def __init__(self, label, x=0, y=0):
 
         self.label = label
         self.created = datetime.datetime.now()
+        self.x = x
+        self.y = y
 
     def __str__(self):
         return self.label +' '+self.created.strftime("%Y-%m-%d")
@@ -18,7 +20,7 @@ class Todo:
 
     def save(self):
         con = database.connectionString()
-        q = "INSERT INTO todo (label, app) VALUES ('{}', 'Python') RETURNING *;".format(self.label)
+        q = "INSERT INTO todo (label, app, x_pos,y_pos) VALUES ('{}', 'Python', {},{}) RETURNING *;".format(self.label, self.x,self.y)
         con.cursor().execute(q)
         result = con.commit()
         print(result)

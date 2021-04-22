@@ -1,3 +1,5 @@
+import random
+
 import database
 import models
 import flask
@@ -21,6 +23,8 @@ def todo():
         print("Post a new todo")
         body = request.get_json(force=True)
 
-        m1 = models.Todo( body['label'] )
+        x = random.randint(0, 1200)
+        y = random.randint(0, 800)
+        m1 = models.Todo( body['label'], x=x,y=y)
         m1.save()
         return jsonify({'message':'success'})
