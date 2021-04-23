@@ -6,6 +6,7 @@ const TodoPostit = ({todo_item}) => {
     return (
 	<div style={postit_style}>
 	    <p>{todo_item.label}</p>
+	    <p style={{color:"#999"}}>({todo_item.app})</p>
 	</div>
     );
 }
