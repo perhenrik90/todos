@@ -5,11 +5,13 @@ import './App.css';
 import TodoPostit from './components/TodoPostit.js';
 
 function App() {
-   const [todos, setTodos] = useState( [] );
+    const [todos, setTodos] = useState( [] );
     const [loaded, setLoaded] = useState(false);
+    const [armedAPI, setArmedAPI] = useState(null);
     useEffect( () => {
-	fetch('/api_python/todo').then( res => res.json()).then( (data) => {setTodos(data); setLoaded(true);})
-    }, [loaded]);
+	setArmedAPI('api_python');
+	fetch('/'+armedAPI+'/todo').then( res => res.json()).then( (data) => {setTodos(data); setLoaded(true);})
+    }, [loaded,armedAPI]);
 
 
 
