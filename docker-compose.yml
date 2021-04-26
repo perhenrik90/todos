@@ -20,9 +20,10 @@ services:
   api_nodejs:
     build: api-nodejs/.
     environment:
-    - POSTGRES_USER=todouser
-    - POSTGRES_PASSWORD=todopassword
-    - POSTGRES_HOST=db
+    - PGUSER=todouser
+    - PGPASSWORD=todopassword
+    - PGHOST=db
+    - PGPORT=5432
     depends_on:
     - db    
 
