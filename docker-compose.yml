@@ -10,8 +10,6 @@ services:
 
   api_python:
     build: api-python/.
-#   ports:
-#   - "5000:5000"
     environment:
     - POSTGRES_USER=todouser
     - POSTGRES_PASSWORD=todopassword
@@ -19,6 +17,15 @@ services:
     depends_on:
     - db
     
+  api_nodejs:
+    build: api-nodejs/.
+    environment:
+    - POSTGRES_USER=todouser
+    - POSTGRES_PASSWORD=todopassword
+    - POSTGRES_HOST=db
+    depends_on:
+    - db    
+
   react:
     build: todo-react/.
     ports:
