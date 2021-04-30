@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import TodoPostit from './components/TodoPostit.js';
+import APISelect from './components/APISelect.js';
 
 function App() {
     const [todos, setTodos] = useState( [] );
@@ -21,6 +22,8 @@ function App() {
 	  <div className="AppCanvas">
 	      { todos.map( x => <TodoPostit todo_item={x}/> )}
 	  </div>
+
+	      <APISelect setArmedAPI={setArmedAPI}/>   
     </div>
   );
 }
