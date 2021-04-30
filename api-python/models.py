@@ -46,7 +46,7 @@ class Todo:
           id SERIAL PRIMARY KEY,
           label VARCHAR(80),
           created TIMESTAMP DEFAULT NOW(),
-          app VARCHAR(10),
+          app VARCHAR(20),
           x_pos INTEGER DEFAULT 0,
           y_pos INTEGER DEFAULT 0
         )

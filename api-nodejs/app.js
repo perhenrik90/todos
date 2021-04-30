@@ -18,13 +18,11 @@ app.get('/api_nodejs/todo', async (req,res) => {
 });
 
 app.post('/api_nodejs/todo', async (req,res) => {
-
+    // must have Content-type: application/json
     const c = new Client();
     await c.connect();
     sql = "INSERT INTO todo (label, app, x_pos,y_pos) VALUES ('"+req.body["label"]+"', 'JavaScript/Node', 1,1) RETURNING *;"
-    console.log( sql );
     const res_pg = await c.query(sql)
-    res.json( req.body );
 });
 
 
