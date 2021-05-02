@@ -10,8 +10,8 @@ const APISelect = ({setArmedAPI}) => {
 	<div>
 	    <p>Select API</p>
 	    <select onChange={ (e) => { setArmedAPI(e.target.value);}}>
-		<option value="api-python">Python API</option>
-		<option value="api-python">JavaScript / Node API</option>
+		<option value="api_python">Python API</option>
+		<option value="api_nodejs">JavaScript / Node API</option>
 	    </select>
 	</div>
     );

@@ -10,10 +10,9 @@ import Button from './components/Button.js';
 function App() {
     const [todos, setTodos] = useState( [] );
     const [loaded, setLoaded] = useState(false);
-    const [armedAPI, setArmedAPI] = useState(null);
+    const [armedAPI, setArmedAPI] = useState('api_python');
     
     useEffect( () => {
-	setArmedAPI('api_python');
 	fetch('/'+armedAPI+'/todo').then( res => res.json()).then( (data) => {setTodos(data); setLoaded(true);})
     }, [loaded,armedAPI]);
 
