@@ -18,15 +18,31 @@ function App() {
     }, [loaded,armedAPI]);
 
 
+    const savePost = (post) =>{
+	setLoaded(false)
+	let context = {
+	    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+	    mode: 'cors', // no-cors, *cors, same-origin
+	    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+	    credentials: 'same-origin', // include, *same-origin, omit
+	    headers: {
+		'Content-Type': 'application/json'
+		// 'Content-Type': 'application/x-www-form-urlencoded',
+	    },
+	    body: JSON.stringify(post)
+	}
+	fetch('/'+armedAPI+'/todo', context).then( res => res.json()).then( () => {setLoaded(true);})
+    }
     
+
   return (
       <div className="App">
 	  <div className="AppCanvas">
 	      <Button label="+" handleClick={()=>{
 			  const newpost = {'label':'','x_pos':20,'y_pos':20, 'is_new':true};
-			  setTodos( (l) => { l.push(newpost) });
+			  setTodos(todos.concat(newpost));
 	      }}/>
-	      { todos.map( x => <TodoPostit todo_item={x}/> )}
+	      { todos.map( x => <TodoPostit todo_item={x} savePost={savePost}/> )}
 	  </div>
 
 	  <APISelect setArmedAPI={setArmedAPI}/>   
