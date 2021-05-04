@@ -21,7 +21,11 @@ app.post('/api_nodejs/todo', async (req,res) => {
     // must have Content-type: application/json
     const c = new Client();
     await c.connect();
-    sql = "INSERT INTO todo (label, app, x_pos,y_pos) VALUES ('"+req.body["label"]+"', 'JavaScript/Node', 1,1) RETURNING *;"
+
+    let x = parseInt(Math.random()*1200);
+    let y = parseInt(Math.random()*800);
+    
+    sql = "INSERT INTO todo (label, app, x_pos,y_pos) VALUES ('"+req.body["label"]+"', 'JavaScript/Node', "+x+","+y+") RETURNING *;"
     const res_pg = await c.query(sql)
 });
 
