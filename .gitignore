@@ -11,6 +11,8 @@
 */!**/src/main/**/target/
 */!**/src/test/**/target/
 
+api-rust/target
+api-rust/Cargo.lock
 
 npm-debug.log*
 yarn-debug.log*
