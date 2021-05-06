@@ -21,10 +21,14 @@ fn db_connection_string() -> String {
 
 #[derive(Serialize, Deserialize)]
 struct Todo {
+    #[serde(default)]
     id: i32,
     label: String,
+    #[serde(default)]
     app: String,
+    #[serde(default)]
     x_pos: i32,
+    #[serde(default)]
     y_pos: i32,
 }
 
@@ -50,6 +54,15 @@ fn todos()  -> Json<Vec<Todo>> {
    return Json( todos );
 }
 
+#[post("/api_rust/todo", format = "application/json", data = "<todo>")]
+fn todos_post(todo : Json<Todo>) -> Json<String> {
+    let mut c = Client::connect(&db_connection_string(), NoTls).unwrap();
+    println!( "Label --> {}" ,todo.label );
+
+    c.execute("INSERT INTO todo (label, app, x_pos,y_pos) VALUES ($1, 'Rust', $2,$3)", &[&todo.label, &todo.x_pos, &todo.y_pos]);
+    return Json("Bingo".to_string());
+}
+
 fn main() {
-    rocket::ignite().mount("/", routes![todos]).launch();
+    rocket::ignite().mount("/", routes![todos, todos_post]).launch();
 }
