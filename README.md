@@ -12,3 +12,10 @@ To start the demo install docker and docker-compose and write the following
 to start all the containers:
 
         docker-compose up
+
+
+## API containers implemented
+
+* python (GET, POST, init Database)
+* nodejs (GET, POST)
+* rust (GET, POST)

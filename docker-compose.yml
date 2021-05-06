@@ -8,6 +8,16 @@ services:
     - POSTGRES_USER=todouser
     - POSTGRES_PASSWORD=todopassword
 
+  api_rust:
+    build: api-rust/.
+    environment:
+    - POSTGRES_USER=todouser
+    - POSTGRES_PASSWORD=todopassword
+    - POSTGRES_HOST=db
+    depends_on:
+    - db
+
+
   api_python:
     build: api-python/.
     environment:
