@@ -25,8 +25,17 @@ services:
     - PGHOST=db
     - PGPORT=5432
     depends_on:
-    - db    
-
+    - db
+    
+  api_go:
+    build: api-go/.
+    environment:
+    - POSTGRES_USER=todouser
+    - POSTGRES_PASSWORD=todopassword
+    - POSTGRES_HOST=db
+    depends_on:
+    - db
+    
   react:
     build: todo-react/.
     ports:
