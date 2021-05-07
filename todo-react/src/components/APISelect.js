@@ -13,6 +13,7 @@ const APISelect = ({setArmedAPI}) => {
 		<option value="api_python">Python API</option>
 		<option value="api_nodejs">JavaScript / Node API</option>
 		<option value="api_rust">Rust</option>
+		<option value="api_go">Go(lang)</option>
 	    </select>
 	</div>
     );

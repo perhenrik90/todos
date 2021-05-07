@@ -29,7 +29,7 @@ func dbstring() (string){
 
 func todo(w http.ResponseWriter, r *http.Request){
 	var psqlInfo = dbstring();
-	fmt.Println(psqlInfo);
+
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	
 	db, err := sql.Open("postgres", psqlInfo);
@@ -86,7 +86,7 @@ func todo(w http.ResponseWriter, r *http.Request){
 			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
-		fmt.Println(t)
+
 		var sql = fmt.Sprintf(`INSERT INTO todo (label, app, x_pos, y_pos) VALUES ($1, $2, $3, $4)`)
 		_, errr := db.Exec(sql, t.Label, "Go",t.X_pos,t.Y_pos)
 		if errr != nil {
